@@ -1,0 +1,33 @@
+# Pristine .Rbuildignore
+^renv$
+^renv\.lock$
+^.*\.Rproj$
+^\.Rproj\.user$
+
+# Extended .Rbuildignore by ChatGPT 4o
+^\.git$                    # Ignore Git directory
+^\.gitignore$              # Ignore .gitignore file
+^\.Rhistory$               # Ignore R history file
+^\.RData$                  # Ignore R data files
+^\.vscode$                 # Ignore VSCode settings directory
+^.*\.log$                  # Ignore log files
+^.*\.tar\.gz$              # Ignore tar.gz files
+^data-raw/                 # Ignore data-raw directory
+^docs/                     # Ignore docs directory
+^tests/testthat/_snaps/    # Ignore test snapshots
+^old_versions/             # Ignore old versions directory
+
+# Package build
+spectrader_*.*.*.tar.gz
+
+# Lintr
+^.lintr$
+
+# Makefile tasks
+^Makefile$
+
+# Development directories
+^dev$
+^tmp$
+^data-raw$
+^assets$

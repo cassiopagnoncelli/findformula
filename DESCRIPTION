@@ -1,0 +1,24 @@
+Package: findformula
+Type: Package
+Title: Find a formula given a set of points
+Version: 2.1.2
+Author: Cassio Pagnoncelli <cassiopagnoncelli@gmail.com>
+Maintainer: Cassio Pagnoncelli <cassiopagnoncelli@gmail.com>
+Authors@R:
+    person("Cassio", "Pagnoncelli", , "cassiopagnoncelli@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0000-7114-7008"))
+Description: Given a set of domain -> codomain points, this package finds a
+    formula that fits the data.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 4.4.0)
+Imports:
+    dplyr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Suggests:
+    testthat (>= 3.0.0),
+    withr (>= 3.0.0)
+Config/testthat/edition: 3
