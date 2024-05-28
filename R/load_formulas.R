@@ -1,5 +1,11 @@
 load_formulas <- function(keywords = NULL) {
-  fs <- paste('R/db', dir('R/db'), 'formulas', sep='/')
+  if (length(dir("R/db")) > 0) {
+    fs <- paste('R/db', dir('R/db'), 'formulas', sep='/')
+  } else if (length(dir("../../R/db")) > 0) {
+    fs <- paste('../../R/db', dir('../../R/db'), 'formulas', sep='/')
+  } else {
+    stop("No formulas found")
+  }
 
   if (!is.null(keywords)) {
     grep_res <- unique(unlist(lapply(keywords, grep, fs)))

@@ -2,13 +2,15 @@ options(warn = -1)
 
 find_formula <- function(y, ..., verbose=T, keywords=NULL) {
   # R^2 function.
-  rsq <- function(f)
-    1 - sum((y - eval(parse(text=f)))^2) / sum((y - mean(y))^2)
+  rsq <- function(f) {
+    y_hat <- eval(parse(text = f))
+    1 - sum((y - y_hat)^2) / sum((y - mean(y))^2)
+  }
 
   # If a sequence is given, create domain.
   domain_vars <- length(list(...))
   if (domain_vars == 0) {
-    x1 <- seq(0, length(y) - 1)
+    x1 <- seq_len(length(y)) - 1
     domain_vars <- 1
   }
 
@@ -19,8 +21,10 @@ find_formula <- function(y, ..., verbose=T, keywords=NULL) {
 
   # Evaluate formulas.
   err <- rep(Inf, length(text_formulas))
-  for (i in 1:length(text_formulas))
-    err[i] <- sqrt(sum((y - eval(parse(text=text_formulas[i])))^2)) / length(y)
+  for (i in seq_len(length(text_formulas))) {
+    y_hat <- eval(parse(text = text_formulas[i]))
+    err[i] <- sqrt(sum((y - y_hat)^2)) / length(y)
+  }
 
   # Best formula.
   results <- data.frame(formula=text_formulas, err) %>%
