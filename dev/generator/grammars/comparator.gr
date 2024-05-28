@@ -1,0 +1,3 @@
+S : C | C & S
+C : T > T
+T : sma_1 | sma_2 | sma_3 | sma_1_lag | sma_2_lag | sma_3_lag | bb_up | bb_dn

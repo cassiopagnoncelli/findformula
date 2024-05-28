@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for i in $(seq 1 25)
+do
+  # Run the process with adequate priority
+  nice -20 ./generate $i
+
+  # Save result
+  if [ -e result.txt ]
+  then
+    mv result.txt results/arithmetic-$i.txt
+  fi
+done
+
+git add -A
+git commit -m 'arithmetics'
+git push

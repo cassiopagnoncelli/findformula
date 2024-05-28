@@ -1,0 +1,3 @@
+S : ( S ) B ( S ) | ( ! S ) | 0 | 1 | T
+B : < | > | <= | >= | == | and | nand | or | xor | nor
+T : x1 | x2
