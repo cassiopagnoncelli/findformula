@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-# Formulas from grammar
-time python3.10 strings.py --file=grammars/44.gr --depth=3 --output=tmp/formulas.txt
+find tmp -type f -exec rm {} \;
 
-sed -r "s/([[:print:]]*)/ratsimp(\1);/" tmp/formulas.txt > tmp/maxima_formulas.in
-cat maxima_defs.in tmp/maxima_formulas.in > tmp/maxima.in
+# Formulas from grammar
+time python3.10 strings.py --file=grammars/44.gr --depth=4 --output=tmp/four4s.raw
+
+# Filter out non-conforming four 4s
+grep -E '^[^4]*4[^4]*4[^4]*4[^4]*4[^4]*$' tmp/four4s.raw > tmp/four4s.txt
+
+# Prepare Maxima input
+sed -r "s/([[:print:]]*)/ratsimp(\1);/" tmp/four4s.txt > tmp/four4s.mac
+cat defs.mac tmp/four4s.mac > tmp/input.mac
+echo "quit();" >> tmp/input.mac
 
 # Process
-time maxima < tmp/maxima.in > tmp/maxima.out
+date
+time maxima --disable-readline -b tmp/input.mac > tmp/maxima_output.log
 
