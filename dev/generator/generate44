@@ -4,7 +4,7 @@
 time python3.10 strings.py --file=grammars/44.gr --depth=3 --output=tmp/formulas.txt
 
 sed -r "s/([[:print:]]*)/ratsimp(\1);/" tmp/formulas.txt > tmp/maxima_formulas.in
-cat tmp/maxima_defs.in tmp/maxima_formulas.in > tmp/maxima.in
+cat maxima_defs.in tmp/maxima_formulas.in > tmp/maxima.in
 
 # Process
 time maxima < tmp/maxima.in > tmp/maxima.out
