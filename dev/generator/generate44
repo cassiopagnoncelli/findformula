@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Formulas from grammar
-time python3.10 strings.py --file=grammars/44.gr --depth=4 --output=formulas.txt
+time python3.10 strings.py --file=grammars/44.gr --depth=3 --output=formulas.txt
 
 sed -r "s/([[:print:]]*)/ratsimp(\1);/" formulas.txt > maxima_formulas.in
 cat maxima_defs.in maxima_formulas.in > maxima.in
