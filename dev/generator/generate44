@@ -3,7 +3,7 @@
 find tmp -type f -exec rm {} \;
 
 # Formulas from grammar
-time python3.10 strings.py --file=grammars/44.gr --depth=4 --output=tmp/four4s.raw
+time python3.10 strings_inline.py --file=grammars/44.gr --depth=4 --output=tmp/four4s.raw
 
 # Filter out non-conforming four 4s
 grep -E '^[^4]*4[^4]*4[^4]*4[^4]*4[^4]*$' tmp/four4s.raw > tmp/four4s.txt

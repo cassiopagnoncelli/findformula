@@ -53,3 +53,5 @@ chartsmith_*.*.*.tar.gz
 
 # Temp
 tmp/*
+
+dev/generator/tmp/*
